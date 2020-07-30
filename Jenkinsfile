@@ -6,25 +6,16 @@ node('Linux'){
     env.WORKER = "Micro"
     env.ENVIRONMENT = 'Production'
     env.APP_NAME = 'prod-omni-channel-api-Prod'
-	env.M2_HOME=/opt/maven
+
 	
     
 //stage('Checkout') {
 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], //userRemoteConfigs: [[credentialsId: 'MuleRepogithub1', url: 'https://github.com/Ashok2781/Mule_Hello_World']]])
 //}   
 stage('Build') {
-sh '''cd /opt'''
-sh '''wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'''
-sh '''sudo tar xzf apache-maven-3.6.3-bin.tar.gz'''
-sh '''sudo ln -s apache-maven-3.6.3 maven'''
-sh '''export PATH=$M2_HOME/bin:$PATH'''
-sh '''echo $PATH'''
 
-
-//sh '''chmod -Rf 777 ./.mvn/wrapper'''
-//sh '''chmod -Rf 777 ./mvnw'''
-sh '''mvn --version'''
-sh '''mvn -B -U -e -V clean -DskipTests package'''
+sh '''/opt/maven/bin/mvn --version'''
+sh '''/opt/maven/bin/mvn -B -U -e -V clean -DskipTests package'''
 }
 stage('Verify') {
 sh '''mvn test'''
@@ -37,7 +28,7 @@ sh '''echo $BG'''
 sh '''echo $WORKER'''
 sh '''echo $ENVIRONMENT'''
 sh '''echo $APP_NAME'''
-sh '''mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'''
+sh '''/opt/maven/bin/mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'''
 }
 
 }
