@@ -8,10 +8,9 @@ pipeline {
     BG = "CIS"
     WORKER = "Micro"
   }
-  
- stages {
-  node('Linux') {  
-	stage('Build') {
+node('Linux') {  
+	stages {
+ 	stage('Build') {
 		steps {
 				sh label: '', script: 'mvn -B -U -e -V clean -DskipTests package'
 			}
