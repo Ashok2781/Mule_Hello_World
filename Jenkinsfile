@@ -1,4 +1,4 @@
-pipeline {
+node ('Linux') {
 
   agent any
   environment {
@@ -8,8 +8,8 @@ pipeline {
     BG = "CIS"
     WORKER = "Micro"
   }
-node('Linux') {  
-	stages {
+
+stages {
  	stage('Build') {
 		steps {
 				sh label: '', script: 'mvn -B -U -e -V clean -DskipTests package'
@@ -31,8 +31,8 @@ node('Linux') {
 				sh label: '', script: 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'
 			}
 		}
-	}
 }
+
 
   tools {
     maven 'Maven_3.6.3'
