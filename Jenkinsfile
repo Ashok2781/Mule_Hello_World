@@ -42,6 +42,6 @@ pipeline {
   }
 
   tools {
-    maven 'M3'
+    maven 'Maven_3.6.3'
   }
 }
