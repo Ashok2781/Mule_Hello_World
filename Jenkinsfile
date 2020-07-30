@@ -5,7 +5,7 @@ pipeline {
     //adding a comment for the commit test
     DEPLOY_CREDS = credentials('deploy-anypoint-user')
     MULE_VERSION = '4.1.4'
-    BG = "ed819f79-2ee4-43f7-928b-82325b50687a"
+    BG = "CIS"
     WORKER = "Micro"
   }
   stages {
