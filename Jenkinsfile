@@ -11,13 +11,14 @@ node('Linux'){
 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], //userRemoteConfigs: [[credentialsId: 'MuleRepogithub1', url: 'https://github.com/Ashok2781/Mule_Hello_World']]])
 //}   
 stage('Build') {
-sh '''chmod -Rf 777 ./.mvn/wrapper'''
-sh '''chmod -Rf 777 ./mvnw'''
-sh '''sudo ./mvnw --version'''
-sh '''sudo ./mvnw -B -U -e -V clean -DskipTests package'''
+sh '''sudo yum install maven'''
+//sh '''chmod -Rf 777 ./.mvn/wrapper'''
+//sh '''chmod -Rf 777 ./mvnw'''
+sh '''mvn --version'''
+sh '''mvn -B -U -e -V clean -DskipTests package'''
 }
 stage('Verify') {
-sh '''sudo ./mvnw test'''
+sh '''mvn test'''
 }
 stage('Deploy-Prod') {
 sh '''echo stage3 steps'''
@@ -27,7 +28,7 @@ sh '''echo $BG'''
 sh '''echo $WORKER'''
 sh '''echo $ENVIRONMENT'''
 sh '''echo $APP_NAME'''
-sh '''sudo ./mvnw -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'''
+sh '''mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'''
 }
 
 }
