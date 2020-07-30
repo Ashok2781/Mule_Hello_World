@@ -10,7 +10,7 @@ pipeline {
   }
   
   stages {
-  node('Linux'){  
+  node('Linux') {  
   stage('Build') {
       steps {
             sh label: '', script: 'mvn -B -U -e -V clean -DskipTests package'
