@@ -9,7 +9,7 @@ pipeline {
     WORKER = "Micro"
   }
   
- //stages {
+ stages {
   node('Linux') {  
   stage('Build') {
       steps {
@@ -33,9 +33,11 @@ pipeline {
       }
     }
   }
-  //}
+
 
   tools {
     maven 'Maven_3.6.3'
   }
+  
+}
 }
