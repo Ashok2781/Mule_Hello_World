@@ -5,7 +5,7 @@ node('Linux'){
     env.BG = "CIS"
     env.WORKER = "Micro"
     env.ENVIRONMENT = 'Production'
-    env.APP_NAME = 'DevOps_Demo_pipeline'
+    env.APP_NAME = 'prod-omni-channel-api-Prod'
 
 
 //stage('Checkout') {
