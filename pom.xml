@@ -54,7 +54,6 @@
                             <format>html</format>
                         </formats>
                     </coverage-->
-
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
@@ -67,8 +66,7 @@
 						<businessGroup>${cloudhub.bg}</businessGroup>
 						<workerType>${cloudhub.worker}</workerType>
 					</cloudHubDeployment>
-
-					</configuration>
+				</configuration>
             </plugin>
         </plugins>
     </build>
