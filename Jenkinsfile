@@ -11,6 +11,7 @@ node('Linux'){
 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], //userRemoteConfigs: [[credentialsId: 'MuleRepogithub1', url: 'https://github.com/Ashok2781/Mule_Hello_World']]])
 //}   
 stage('Build') {
+sh '''sudo yum makecache fast'''
 sh '''sudo yum install maven'''
 //sh '''chmod -Rf 777 ./.mvn/wrapper'''
 //sh '''chmod -Rf 777 ./mvnw'''
