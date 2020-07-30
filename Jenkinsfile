@@ -11,8 +11,13 @@ node('Linux'){
 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], //userRemoteConfigs: [[credentialsId: 'MuleRepogithub1', url: 'https://github.com/Ashok2781/Mule_Hello_World']]])
 //}   
 stage('Build') {
-sh '''sudo yum makecache fast'''
-sh '''sudo yum install maven'''
+sh '''cd /opt'''
+sh '''wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'''
+sh '''sudo tar xzf apache-maven-3.6.3-bin.tar.gz'''
+sh '''sudo ln -s apache-maven-3.6.3 maven'''
+sh '''sudo cat /etc/profile.d/maven.sh'''
+
+
 //sh '''chmod -Rf 777 ./.mvn/wrapper'''
 //sh '''chmod -Rf 777 ./mvnw'''
 sh '''mvn --version'''
