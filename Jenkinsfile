@@ -1,16 +1,13 @@
 node ('Linux') {
-
-  //agent any
-  environment {
-    //adding a comment for the commit test
-    DEPLOY_CREDS = credentials('deploy-anypoint-user')
-    MULE_VERSION = '4.1.4'
-    BG = "CIS"
-    WORKER = "Micro"
-  }
-
 stages {
  	stage('Build') {
+		environment {
+			//adding a comment for the commit test
+			DEPLOY_CREDS = credentials('deploy-anypoint-user')
+			MULE_VERSION = '4.1.4'
+			BG = "CIS"
+			WORKER = "Micro"
+		}
 		steps {
 				sh label: '', script: 'mvn -B -U -e -V clean -DskipTests package'
 			}
