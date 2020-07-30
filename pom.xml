@@ -9,8 +9,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hello-world</artifactId>
     <packaging>mule-application</packaging>
-    <!--name>hello-world</name-->
-	<name>DevOps_Demo_Pipeline</name>
+    <name>hello-world</name>
+	
 
     <!--properties>
         <munit.version>2.1.2</munit.version>
