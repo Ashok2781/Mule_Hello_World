@@ -11,10 +11,10 @@
     <packaging>mule-application</packaging>
     <name>hello-world</name>
 
-    <properties>
+    <!--properties>
         <munit.version>2.1.2</munit.version>
     <mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
-    </properties>
+    </properties-->
 
     <build>
         <!--testResources>
