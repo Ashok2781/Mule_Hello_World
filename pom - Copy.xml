@@ -59,13 +59,13 @@
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<!-- Deploy User Parameter -->
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
+						<username>342607</username>
+						<password>Anirudhan@1</password>
 						<!-- Environment Parameter -->
-						<environment>${cloudhub.environment}</environment>
-						<applicationName>${cloudhub.app}</applicationName>
-						<businessGroup>${cloudhub.bg}</businessGroup>
-						<workerType>${cloudhub.worker}</workerType>
+						<environment>production</environment>
+						<applicationName>design-env-deploy-test1-whse</applicationName>
+						<businessGroup>ed819f79-2ee4-43f7-928b-82325b50687a</businessGroup>
+						<workerType>MICRO</workerType>
 					</cloudHubDeployment>
 
 					</configuration>
