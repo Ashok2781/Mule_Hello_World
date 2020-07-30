@@ -1,26 +1,33 @@
-node ('Linux') {
-
-		stage ('Build') {
-			//adding a comment for the commit test
-			env.DEPLOY_CREDS = credentials('deploy-anypoint-user')
-			env.MULE_VERSION = '4.1.4'
-			env.BG = "CIS"
-			env.WORKER = "Micro"
-			sh 'mvn -B -U -e -V clean -DskipTests package'
-		}
-		stage ('Test') {
-			sh 'mvn test'
-		}
-		
-		stage ('Deploy Production') {
-			environment 
-				ENVIRONMENT = 'Production'
-				APP_NAME = 'DevOps_Demo_Hello_World'
-			
-			sh 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'
-		}
- // tools {
- //   maven 'Maven_3.6.3'
- // }
+node('Linux'){
+    
+    env.DEPLOY_CREDS = credentials('deploy-anypoint-user')
+    env.MULE_VERSION = '4.1.4'
+    env.BG = "ed819f79-2ee4-43f7-928b-82325b50687a"
+    env.WORKER = "Micro"
+    env.ENVIRONMENT = 'Production'
+    env.APP_NAME = 'prod-omni-channel-api-Prod'
+    
+//stage('Checkout') {
+//checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], //userRemoteConfigs: [[credentialsId: 'MuleRepogithub1', url: 'https://github.com/Ashok2781/Mule_Hello_World']]])
+//}   
+stage('Build') {
+sh '''chmod -Rf 777 ./.mvn/wrapper'''
+sh '''chmod -Rf 777 ./mvnw'''
+sh '''sudo ./mvnw --version'''
+sh '''sudo ./mvnw -B -U -e -V clean -DskipTests package'''
+}
+stage('Verify') {
+sh '''sudo ./mvnw test'''
+}
+stage('Deploy-Prod') {
+sh '''echo stage3 steps'''
+sh '''echo $DEPLOY_CREDS'''
+sh '''echo $MULE_VERSION'''
+sh '''echo $BG'''
+sh '''echo $WORKER'''
+sh '''echo $ENVIRONMENT'''
+sh '''echo $APP_NAME'''
+sh '''sudo ./mvnw -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version=$MULE_VERSION -Danypoint.username=$DEPLOY_CREDS_USR -Danypoint.password=$DEPLOY_CREDS_PSW -Dcloudhub.app=$APP_NAME -Dcloudhub.environment=$ENVIRONMENT -Dcloudhub.bg=$BG -Dcloudhub.worker=$WORKER'''
+}
 
 }
