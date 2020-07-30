@@ -73,7 +73,7 @@
             <version>${sockets.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-runner</artifactId>
             <version>${munit.version}</version>
@@ -86,7 +86,7 @@
             <version>${munit.version}</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
-        </dependency>
+        </dependency-->
     </dependencies>
     <repositories>
         <repository>
