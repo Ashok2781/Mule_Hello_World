@@ -6,6 +6,8 @@ node('Linux'){
     env.WORKER = "Micro"
     env.ENVIRONMENT = 'Production'
     env.APP_NAME = 'prod-omni-channel-api-Prod'
+	env.M2_HOME=/opt/maven
+	
     
 //stage('Checkout') {
 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], //userRemoteConfigs: [[credentialsId: 'MuleRepogithub1', url: 'https://github.com/Ashok2781/Mule_Hello_World']]])
@@ -15,7 +17,8 @@ sh '''cd /opt'''
 sh '''wget https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'''
 sh '''sudo tar xzf apache-maven-3.6.3-bin.tar.gz'''
 sh '''sudo ln -s apache-maven-3.6.3 maven'''
-sh '''sudo cat /etc/profile.d/maven.sh'''
+sh '''export PATH=$M2_HOME/bin:$PATH'''
+sh '''echo $PATH'''
 
 
 //sh '''chmod -Rf 777 ./.mvn/wrapper'''
