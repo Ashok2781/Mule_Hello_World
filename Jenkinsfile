@@ -15,7 +15,13 @@ node('Linux'){
 stage('Build') {
 sh '''ls -ltr /opt/maven/bin'''
 sh '''/opt/maven/bin/mvn --version'''
+sh '''============================================================'''
+sh '''pwd'''
+sh '''ls -ltr'
+sh '''============================================================'''
 sh '''/opt/maven/bin/mvn -B -U -e -V clean -DskipTests package'''
+sh '''============================================================'''
+
 }
 
 stage('Verify') {
