@@ -31,7 +31,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <classifier>mule-application</classifier>
+					<authToken>7a2d13c6-3a5a-44b8-853c-835c85af37fd</authToken>
 					<cloudHubDeployment>
+						<authToken>7a2d13c6-3a5a-44b8-853c-835c85af37fd</authToken>
                         <uri>https://anypoint.mulesoft.com</uri>
                         <muleVersion>4.3.0</muleVersion>
                         <username>342607</username>
