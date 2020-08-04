@@ -10,19 +10,20 @@
     <artifactId>hello-world</artifactId>
     <packaging>mule-application</packaging>
     <name>hello-world</name>
+	
 
-    <properties>
+    <!--properties>
         <munit.version>2.1.2</munit.version>
     <mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
-    </properties>
+    </properties-->
 
     <build>
-        <testResources>
+        <!--testResources>
             <testResource>
                 <directory>src/test/munit</directory>
                 <filtering>true</filtering>
             </testResource>
-        </testResources>
+        </testResources-->
         <plugins>
             <plugin>
                 <groupId>org.mule.tools.maven</groupId>
@@ -44,7 +45,7 @@
                     </cloudHubDeployment>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
                 <artifactId>munit-maven-plugin</artifactId>
                 <version>${munit.version}</version>
@@ -65,8 +66,8 @@
                             <format>html</format>
                         </formats>
                     </coverage>
-                </configuration>
-            </plugin>
+				</configuration>
+            </plugin-->
         </plugins>
     </build>
 
@@ -84,7 +85,13 @@
             <version>${sockets.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
+
         <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!--dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-runner</artifactId>
             <version>${munit.version}</version>
@@ -97,7 +104,7 @@
             <version>${munit.version}</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
-        </dependency>
+        </dependency-->
     </dependencies>
     <repositories>
         <repository>
